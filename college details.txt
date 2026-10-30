@@ -1,0 +1,90 @@
+SCSVMV COLLEGE ENQUIRY CHATBOT - COLLEGE DETAILS
+
+College name:
+Sri Chandrasekharendra Saraswathi Viswa Mahavidyalaya (SCSVMV), also known as Kanchi University.
+
+Location:
+Enathur, Kanchipuram, Tamil Nadu – 631561, India.
+
+Official website:
+https://www.kanchiuniv.ac.in/
+
+Admissions email:
+admission@kanchiuniv.ac.in
+
+Phone numbers:
++91 96290 32323
++91 96290 01144
+
+Academic areas:
+Engineering and Technology, Arts, Science, Commerce, Computer Applications, Management, Education, Health Sciences, Law and research programmes. Exact course availability should be verified for the current academic year.
+
+Admissions:
+Requirements, selection process, deadlines, documents and eligibility depend on the programme. Contact the admissions office or consult the current official prospectus.
+
+Fees and scholarships:
+Fees and scholarship rules may change. Ask the admissions office for verified current information.
+
+Facilities:
+Laboratories, library and learning resources, hostel and mess arrangements, transport, sports and cultural activities, Wi-Fi and student support. Availability and arrangements should be confirmed with the relevant university office.
+
+Placements:
+Placement outcomes depend on programme, batch, employer requirements and student eligibility. Contact the placement office for verified statistics.
+
+Examinations:
+For timetables, results, hall tickets and examination regulations, check the official university website or contact the examination section.
+
+Important note:
+This project provides general enquiry guidance. Do not treat unverified fee amounts, dates, placement statistics or facility schedules as official. Confirm time-sensitive details directly with SCSVMV.
+
+
+ADDITIONAL ENQUIRY TOPICS FOR THE CHATBOT
+
+College information and contact details:
+College: Sri Chandrasekharendra Saraswathi Viswa Mahavidyalaya (SCSVMV).
+Address: Enathur, Kanchipuram, Tamil Nadu – 631561, India.
+Website: https://www.kanchiuniv.ac.in/
+Admissions email: admission@kanchiuniv.ac.in
+Phone numbers listed in this project: +91 96290 32323 and +91 96290 01144. Verify all contact details before publishing.
+
+Courses and departments:
+The project can answer general questions about Engineering and Technology, Arts, Science, Commerce, Computer Applications, Management, Education, Health Sciences, Law and research programmes. Verify exact departments, course names, eligibility and intake for the current academic year.
+
+Course fees and administration:
+Do not invent fee amounts. Tuition, examination, hostel and transport fees can vary by programme, admission category and academic year. Obtain the latest fee schedule from the admissions/accounts office. For administration, contact the university office and ask to be directed to the registrar, accounts, department or examination section.
+
+Scholarships and placements:
+Scholarship eligibility, documentation and deadlines depend on current schemes. Placement opportunities and statistics vary by programme and graduating batch. Request verified current details from the scholarship/student support office and placement office.
+
+Faculty information and teaching:
+Faculty names, qualifications, research interests, office hours and contact details should be taken from current official department records. Teaching methods, practical sessions, projects and mentoring may differ by programme. Do not publish unverified personal or staff details.
+
+Regular timetable and CSE timetable:
+Timetables are department- and semester-specific. SAMPLE ONLY for demonstration: 9:00–10:00 Lecture 1; 10:00–11:00 Lecture 2; 11:00–11:15 break; 11:15–12:15 Lecture 3; 12:15–1:00 lunch; 1:00–3:00 laboratory/tutorial; 3:00–4:00 lecture/mentoring. This is not an official SCSVMV timetable. Replace it with the current timetable issued by the CSE department before presenting it as real information.
+
+Course structure:
+Curriculum, subject names, credits, practicals, electives, internships and projects depend on programme, regulation year and semester. Use the latest syllabus issued by the relevant department.
+
+Internal/external examinations and attendance:
+Internal assessment, end-semester examinations, hall tickets, results, reassessment and attendance eligibility follow current university regulations. Confirm rules and dates with official examination notices, the class adviser or academic office.
+
+Hostels, rooms and food:
+Room types, occupancy, mess facilities, food menu, timings, hostel fees, vacancies and rules must be confirmed with the hostel warden or university office.
+
+Bus routes and transport fees:
+Routes, stops, pickup points, timings and fees change by route and academic year. Use the latest transport-office route and fee list.
+
+Library, Wi-Fi and laboratories:
+Library opening hours, borrowing rules, digital resources, Wi-Fi login and coverage, laboratory equipment and practical schedules should be verified with the library, IT team and respective departments.
+
+Medical facilities and teaching support:
+Confirm current first-aid, clinic, health-support and emergency arrangements with the university. Contact local emergency services for emergencies.
+
+Accreditation, sports and campus facilities:
+Only quote current accreditation, approvals or rankings after checking official disclosures and the relevant accrediting body. Sports grounds, indoor games, auditorium and other campus facilities should be confirmed with student affairs or physical education staff.
+
+Cultural festivals, classical music and yoga:
+Event dates, venues, registration and schedules depend on the academic calendar and coordinators. Confirm current information with student activities or the relevant cultural/music/yoga coordinator.
+
+IMPORTANT PROJECT NOTE:
+This is a student demonstration chatbot. It must not present sample timetables, unverified fee amounts, contact details, accreditation, staff information, bus routes, attendance rules or event schedules as official. Update this file using verified information from the university before public use.
