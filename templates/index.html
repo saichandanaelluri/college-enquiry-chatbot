@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCSVMV | College Enquiry Chatbot</title>
+  <style>
+    :root{--navy:#102f59;--blue:#1c5aa6;--sky:#eaf3ff;--ink:#1c2b3a;--muted:#617184;--white:#fff;--line:#dce6f0;--green:#e7f8ef}
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f8fc;color:var(--ink);line-height:1.6}
+    a{color:inherit}
+    .topbar{background:#09213f;color:#dceaff;text-align:center;padding:8px 16px;font-size:13px}
+    header{background:linear-gradient(125deg,#102f59,#1c5aa6);color:white;padding:38px 20px 34px;text-align:center}
+    .crest{width:58px;height:58px;border:2px solid #ffffffaa;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;font-size:25px}
+    header h1{max-width:950px;margin:0 auto;font-size:clamp(25px,4vw,38px);line-height:1.2}
+    header p{margin:10px 0 0;color:#e4efff}
+    nav{position:sticky;top:0;z-index:10;background:#09213f;display:flex;justify-content:center;flex-wrap:wrap;padding:8px 12px;box-shadow:0 4px 14px #102f5920}
+    nav a{color:white;text-decoration:none;padding:9px 13px;border-radius:7px;font-size:14px}
+    nav a:hover{background:#214d80}
+    .container{width:min(1120px,92%);margin:auto}
+    .hero{display:grid;grid-template-columns:1.35fr .8fr;gap:25px;align-items:center;padding:45px 0 20px}
+    .hero-copy,.hero-panel,.card,.chat-wrap{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px #183c6410}
+    .hero-copy{padding:36px}
+    .eyebrow{color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:12px}
+    h2{color:var(--navy);font-size:28px;line-height:1.25;margin:8px 0 12px}
+    .hero-copy p{color:var(--muted);margin:0 0 22px}
+    .btn{display:inline-block;background:var(--blue);color:white;text-decoration:none;padding:12px 18px;border-radius:9px;font-weight:700;border:0;cursor:pointer}
+    .btn:hover{background:var(--navy)}
+    .hero-panel{padding:25px;background:linear-gradient(160deg,#eaf3ff,#fff)}
+    .hero-panel h3{color:var(--navy);margin-top:0}
+    .quick-links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .quick-links a{background:white;border:1px solid var(--line);padding:12px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:600}
+    section{padding:30px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 22px}
+    .section-head p{color:var(--muted);margin-top:0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .card{padding:23px}
+    .icon{font-size:27px}
+    .card h3{color:var(--navy);margin:8px 0}
+    .card p,.card li{color:var(--muted);font-size:15px}
+    ul{padding-left:20px}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+    .about .card{height:100%}
+    .notice{background:#fff7df;border:1px solid #f0dfac;color:#6d5614;padding:14px 16px;border-radius:10px;font-size:14px}
+    .chat-wrap{padding:24px;max-width:850px;margin:auto}
+    .chat-title{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+    .bot-icon{width:48px;height:48px;border-radius:14px;background:var(--sky);display:grid;place-items:center;font-size:24px}
+    .chat-title h3{margin:0;color:var(--navy)}
+    .chat-title p{margin:0;color:var(--muted);font-size:13px}
+    #chatMessages{height:320px;overflow-y:auto;background:#f8fbff;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:13px}
+    .message{max-width:88%;padding:11px 14px;margin:9px 0;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}
+    .bot-message{background:var(--green);border-bottom-left-radius:3px}
+    .user-message{background:#dceaff;margin-left:auto;text-align:left;border-bottom-right-radius:3px}
+    .chat-controls{display:flex;gap:9px}
+    #userInput{flex:1;min-width:0;border:1px solid #bdcbd9;border-radius:9px;padding:13px;font-size:15px;outline-color:var(--blue)}
+    button:disabled{opacity:.6;cursor:wait}
+    .suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .suggestions button{background:#f1f6fd;border:1px solid #d6e5f6;color:var(--navy);padding:8px 11px;border-radius:20px;cursor:pointer}
+    .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .contact-item{padding:15px;background:#f7faff;border-radius:10px;margin:8px 0}
+    .contact-item strong{display:block;color:var(--navy)}
+    footer{background:#09213f;color:#e5efff;text-align:center;padding:25px 16px;margin-top:30px;font-size:14px}
+    footer a{color:white}
+    @media(max-width:760px){.hero,.about{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.hero-copy{padding:25px}.contact-grid{grid-template-columns:1fr}}
+    @media(max-width:500px){.grid{grid-template-columns:1fr}.chat-controls{flex-direction:column}#chatMessages{height:300px}.message{max-width:96%}nav a{padding:7px 9px;font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">COLLEGE ENQUIRY PORTAL · Student information and assistance</div>
+  <header>
+    <div class="crest" aria-hidden="true">🎓</div>
+    <h1>Sri Chandrasekharendra Saraswathi Viswa Mahavidyalaya</h1>
+    <p>SCSVMV · Kanchi University</p>
+    <p>Enathur, Kanchipuram, Tamil Nadu – 631561</p>
+  </header>
+  <nav>
+    <a href="#home">Home</a><a href="#about">About</a><a href="#courses">Courses</a>
+    <a href="#admissions">Admissions</a><a href="#facilities">Facilities</a>
+    <a href="#student-information">Student Info</a><a href="#placements">Placements</a><a href="#chatbot">Ask Chatbot</a><a href="#contact">Contact</a>
+  </nav>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Welcome to SCSVMV</div>
+        <h2>Your College Enquiry Assistant</h2>
+        <p>Find helpful information about academic programmes, admissions, campus facilities and student services. Ask the chatbot a question whenever you need guidance.</p>
+        <a class="btn" href="#chatbot">Ask the Chatbot →</a>
+      </div>
+      <aside class="hero-panel">
+        <h3>What would you like to know?</h3>
+        <div class="quick-links">
+          <a href="#courses">📚 Courses offered</a><a href="#admissions">📝 Admissions</a>
+          <a href="#facilities">🏫 Campus facilities</a><a href="#placements">💼 Placements</a>
+          <a href="#contact">☎ Contact details</a><a href="#chatbot">💬 Ask a question</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="section-head"><div class="eyebrow">Discover the university</div><h2>About the College</h2><p>Basic information to help students and visitors get started.</p></div>
+      <div class="about">
+        <div class="card"><div class="icon">🏛️</div><h3>SCSVMV</h3>
+          <p>Sri Chandrasekharendra Saraswathi Viswa Mahavidyalaya, also known as Kanchi University, is located in Enathur, Kanchipuram, Tamil Nadu.</p>
+          <p>The university offers programmes in multiple academic areas. Programme availability and admission details should be confirmed for the current academic year.</p>
+          <a href="https://www.kanchiuniv.ac.in/" target="_blank" rel="noopener noreferrer">Visit official university website ↗</a>
+        </div>
+        <div class="card"><div class="icon">📍</div><h3>Campus Location</h3>
+          <p><strong>Address</strong><br>Enathur, Kanchipuram,<br>Tamil Nadu – 631561, India</p>
+          <p>For current office hours, campus directions and department-specific information, contact the university directly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses">
+      <div class="section-head"><div class="eyebrow">Academic programmes</div><h2>Courses Offered</h2><p>Explore broad programme areas. The current prospectus is the source for the final list of courses.</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">💻</div><h3>Engineering & Technology</h3><p>Undergraduate and postgraduate engineering and technology programmes, along with research opportunities.</p></article>
+        <article class="card"><div class="icon">🔬</div><h3>Arts, Science & Commerce</h3><p>Programmes across arts, sciences, commerce and related academic disciplines.</p></article>
+        <article class="card"><div class="icon">📈</div><h3>Management & Computing</h3><p>Management and computer application programmes, subject to current availability.</p></article>
+        <article class="card"><div class="icon">🩺</div><h3>Health Sciences</h3><p>Selected health science programmes. Check current eligibility and admission requirements.</p></article>
+        <article class="card"><div class="icon">📖</div><h3>Education</h3><p>Education-related programmes and training options, subject to the current prospectus.</p></article>
+        <article class="card"><div class="icon">⚖️</div><h3>Law & Research</h3><p>Law programmes and research pathways. Confirm programme details directly with the university.</p></article>
+      </div>
+      <p class="notice">Course availability, eligibility, intake and fees can change. Please verify the current details with the university before applying.</p>
+    </section>
+
+    <section id="admissions">
+      <div class="section-head"><div class="eyebrow">Start your journey</div><h2>Admissions</h2><p>Use these general steps as a guide and confirm the exact process for your chosen programme.</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">1️⃣</div><h3>Choose a Programme</h3><p>Review the current course list and make sure the programme matches your interests and qualifications.</p></article>
+        <article class="card"><div class="icon">2️⃣</div><h3>Check Eligibility</h3><p>Review the required previous qualification, subject requirements and any applicable entrance or counselling process.</p></article>
+        <article class="card"><div class="icon">3️⃣</div><h3>Contact Admissions</h3><p>Ask the admissions office for application forms, deadlines, fees and the required documents.</p></article>
+      </div>
+    </section>
+
+    <section id="facilities">
+      <div class="section-head"><div class="eyebrow">Campus life</div><h2>Facilities & Student Support</h2><p>Facilities and access arrangements may vary by department and current campus policy.</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">🧪</div><h3>Laboratories</h3><p>Department-specific practical learning and laboratory resources. Ask your department about current equipment and access.</p></article>
+        <article class="card"><div class="icon">📚</div><h3>Library</h3><p>Library and learning resources. Confirm opening hours, digital access and borrowing rules with the library.</p></article>
+        <article class="card"><div class="icon">🛏️</div><h3>Hostel & Mess</h3><p>Contact the university to confirm current availability, room types, charges, rules and dining arrangements.</p></article>
+        <article class="card"><div class="icon">🚌</div><h3>Transport</h3><p>Check with the transport office for current routes, pickup points, timings and fees.</p></article>
+        <article class="card"><div class="icon">🏅</div><h3>Sports & Culture</h3><p>Ask about sports, student clubs, cultural programmes, yoga activities and campus events.</p></article>
+        <article class="card"><div class="icon">📶</div><h3>Wi-Fi & Student Services</h3><p>Contact the relevant campus office for Wi-Fi access, medical assistance and student support services.</p></article>
+      </div>
+    </section>
+
+    <section id="placements">
+      <div class="section-head"><div class="eyebrow">Career development</div><h2>Placements & Career Support</h2></div>
+      <div class="card">
+        <p>Placement opportunities can depend on the programme, graduating batch, employer requirements and student eligibility. For verified placement statistics, recruiters, salary information, internships and placement procedures, contact the university placement office.</p>
+      </div>
+    </section>
+
+
+    <section id="student-information">
+      <div class="section-head"><div class="eyebrow">Student information desk</div><h2>More College Information</h2><p>Choose a topic or ask the chatbot for details. Exact fees, schedules and policies should be confirmed with the university.</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">🧑‍🏫</div><h3>Faculty & Departments</h3><p>Ask for faculty information by department, including CSE, EEE, ECE, Management, Law and Education.</p></article>
+        <article class="card"><div class="icon">💳</div><h3>Fees & Scholarships</h3><p>Course fees, administration contacts, eligibility for scholarships and fee concessions.</p></article>
+        <article class="card"><div class="icon">🗓️</div><h3>Timetable & Course Structure</h3><p>Daily schedule, CSE timetable guidance, syllabus, semesters, subjects and course credits.</p></article>
+        <article class="card"><div class="icon">📝</div><h3>Examinations & Attendance</h3><p>Internal and external examinations, assessments, passing requirements and attendance rules.</p></article>
+        <article class="card"><div class="icon">🛏️</div><h3>Hostel, Rooms & Food</h3><p>Hostel accommodation, room sharing, mess food, meal timings and canteen information.</p></article>
+        <article class="card"><div class="icon">🚌</div><h3>Bus Routes & Transport Fees</h3><p>Ask about reported routes including Kanchipuram, Poonamallee, Ranipet, Chengalpattu, Thiruthani, Vandavasi and Uthiramerur.</p></article>
+        <article class="card"><div class="icon">📚</div><h3>Library, Wi-Fi & Laboratories</h3><p>Central library, digital resources, campus internet access and department laboratory facilities.</p></article>
+        <article class="card"><div class="icon">🩺</div><h3>Medical & Teaching Support</h3><p>Medical assistance, teaching methods, practicals, projects and student learning support.</p></article>
+        <article class="card"><div class="icon">🏅</div><h3>Accreditation & Campus Life</h3><p>Accreditation information, sports, campus facilities, cultural festivals, classical music events and yoga.</p></article>
+      </div>
+    </section>
+
+    <section id="chatbot">
+      <div class="section-head"><div class="eyebrow">Instant assistance</div><h2>College Enquiry Chatbot</h2><p>Type your question below. The chatbot is designed to answer common questions about SCSVMV.</p></div>
+      <div class="chat-wrap">
+        <div class="chat-title"><div class="bot-icon">🤖</div><div><h3>SCSVMV Help Assistant</h3><p>College information assistant</p></div></div>
+        <div id="chatMessages" aria-live="polite"><div class="message bot-message">Hello! Welcome to the SCSVMV College Enquiry Chatbot. 👋<br>Ask about courses, departments, fees, scholarships, faculty, CSE timetable, syllabus, exams, attendance, hostels, food, bus routes, transport fees, library, Wi-Fi, labs, medical facilities, accreditation, sports, festivals, classical music or yoga.</div></div>
+        <form id="chatForm">
+          <div class="chat-controls"><input type="text" id="userInput" name="msg" placeholder="For example: What courses are offered?" autocomplete="off" required><button class="btn" type="submit" id="sendButton">Send</button></div>
+        </form>
+        <div class="suggestions">
+          <button type="button" data-question="What courses are offered?">Courses</button>
+          <button type="button" data-question="How do I apply for admission?">Admissions</button>
+          <button type="button" data-question="What are the fees?">Fees</button>
+          <button type="button" data-question="Tell me about hostel and mess facilities">Hostel</button>
+          <button type="button" data-question="How can I contact the college?">Contact</button>
+          <button type="button" data-question="Show CSE timetable and course structure">CSE timetable</button>
+          <button type="button" data-question="What are the attendance and exam rules?">Exams & attendance</button>
+          <button type="button" data-question="What bus routes and transport fees are available?">Bus routes</button>
+          <button type="button" data-question="Tell me about classical music, cultural festivals and yoga">Culture & yoga</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head"><div class="eyebrow">Get in touch</div><h2>Contact Information</h2><p>For exact and updated information, contact the university directly.</p></div>
+      <div class="card contact-grid">
+        <div>
+          <div class="contact-item"><strong>University</strong>Sri Chandrasekharendra Saraswathi Viswa Mahavidyalaya (SCSVMV)</div>
+          <div class="contact-item"><strong>Address</strong>Enathur, Kanchipuram, Tamil Nadu – 631561</div>
+        </div>
+        <div>
+          <div class="contact-item"><strong>Phone</strong><a href="tel:+919629032323">+91 96290 32323</a> / <a href="tel:+919629001144">+91 96290 01144</a></div>
+          <div class="contact-item"><strong>Admissions email</strong><a href="mailto:admission@kanchiuniv.ac.in">admission@kanchiuniv.ac.in</a></div>
+          <div class="contact-item"><strong>Official website</strong><a href="https://www.kanchiuniv.ac.in/" target="_blank" rel="noopener noreferrer">kanchiuniv.ac.in ↗</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><strong>SCSVMV College Enquiry Chatbot</strong><br>Student information project · Verify time-sensitive details with the university.</footer>
+
+  <script>
+    const chatForm = document.getElementById("chatForm");
+    const userInput = document.getElementById("userInput");
+    const chatMessages = document.getElementById("chatMessages");
+    const sendButton = document.getElementById("sendButton");
+
+    function addMessage(text, className) {
+      const message = document.createElement("div");
+      message.className = "message " + className;
+      message.textContent = text;
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return message;
+    }
+
+    async function askQuestion(question) {
+      question = question.trim();
+      if (!question) return;
+      addMessage(question, "user-message");
+      userInput.value = "";
+      sendButton.disabled = true;
+      const waiting = addMessage("Thinking...", "bot-message");
+      try {
+        const formData = new URLSearchParams();
+        formData.append("msg", question);
+        const response = await fetch("/get", {
+          method: "POST",
+          headers: {"Content-Type": "application/x-www-form-urlencoded"},
+          body: formData.toString()
+        });
+        const data = await response.json();
+        waiting.textContent = data.response || "Sorry, I couldn't find an answer.";
+      } catch (error) {
+        waiting.textContent = "Unable to connect to the chatbot. Make sure the Flask app is running and try again.";
+      } finally {
+        sendButton.disabled = false;
+        userInput.focus();
+      }
+    }
+
+    chatForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      askQuestion(userInput.value);
+    });
+
+    document.querySelectorAll(".suggestions button").forEach(button => {
+      button.addEventListener("click", () => askQuestion(button.dataset.question));
+    });
+  </script>
+</body>
+</html>
